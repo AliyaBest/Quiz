@@ -11,6 +11,7 @@ const App = () => {
   const [answerFeedback, setAnswerFeedback] = useState('')
   const [nextButtonDisabled, setNextButtonDisabled] = useState(true)
   let correctAnswer = ''
+  let percentageScore = Math.ceil((100 / data.length) * score)
 
   const handleAnswerButton = (isCorrect)=>{
     if(isCorrect){
@@ -19,7 +20,7 @@ const App = () => {
       setAnswerFeedback('Correct')
     } else {
       setIsCorrect(false)
-      setAnswerFeedback(`Sorry! That's incorrect. The correct answer is ${correctAnswer}`)
+      setAnswerFeedback(`Sorry! That's incorrect.The correct answer is "${correctAnswer}"`)
 
     }
     setNextButtonDisabled(false)
@@ -39,7 +40,6 @@ const App = () => {
     setNextButtonDisabled(true)
     setButtonIsDisabled(false)
     setAnswerFeedback('')
-
   }
 
   return (
@@ -49,34 +49,43 @@ const App = () => {
         <h2>Question {currentQuestion + 1} of {data.length}</h2>
       </header>
 
-      <section>
-        {showScore ? <div>{score} out of {data.length}</div> : data.map((element,id) => {
+      <main>
+        {showScore ?
+          <section>
+            <p>You got {score} out of {data.length} correct.</p>
+            <p>Your score is {percentageScore}%</p>
+          </section> :
 
-          if(id === currentQuestion){
-            const answers = element.incorrect.slice()
+          data
+            .map((element,id) => {
+              correctAnswer = element.correct
 
-            correctAnswer = element.correct
+              if(id === currentQuestion){
+                const answers = element.incorrect.slice()
+                answers.splice(correctAnswerPlacement, 0, element.correct)
 
+                return(
+                  <section className="answers">
+                    <h3 key={id}>{element.question}</h3>
 
-            answers.splice(correctAnswerPlacement, 0, element.correct)
-            return(
-            <div className="answers">
-            <h3 key={id}>{element.question}</h3>
-            {answers.map(answer=>{
-
-             return <div><ul><button disabled={buttonIsDisabled} className="answer_buttons" onClick={()=>handleAnswerButton(!element.incorrect.includes(answer))}><li>{answer}</li></button></ul>
-             </div>
-            })}
-            <p>{answerFeedback}</p>
-            </div>
-            )
+                    {answers
+                      .map(answer=>{
+                        return <ul>
+                                  <li className="answer_buttons" disabled={buttonIsDisabled} onClick={()=>handleAnswerButton(!element.incorrect.includes(answer))}>
+                                    {answer}
+                                  </li>
+                                </ul>
+                  })}
+                  <p>{answerFeedback}</p>
+                  </section>
+                )
           }
 
         })}
-      </section>
-      <section>
-        <button id="next-button" disabled={nextButtonDisabled} onClick={()=>handleNextButton()}>Next</button>
-      </section>
+      </main>
+
+      <button id="next-button" disabled={nextButtonDisabled} onClick={()=>handleNextButton()}>Next</button>
+
 
     </div>
 
