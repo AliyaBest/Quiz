@@ -9,6 +9,7 @@ const App = () => {
   const [buttonIsDisabled, setButtonIsDisabled] = useState(false)
   const correctAnswerPlacement = Math.floor((Math.random() * 4) + 1);
   const [answerFeedback, setAnswerFeedback] = useState('')
+  const [nextButtonDisabled, setNextButtonDisabled] = useState(true)
   let correctAnswer = ''
 
   const handleAnswerButton = (isCorrect)=>{
@@ -21,7 +22,7 @@ const App = () => {
       setAnswerFeedback(`Sorry! That's incorrect. The correct answer is ${correctAnswer}`)
 
     }
-
+    setNextButtonDisabled(false)
     setButtonIsDisabled(true)
    }
 
@@ -35,6 +36,7 @@ const App = () => {
       setShowScore(true)
       document.getElementById('next-button').style.display = "none"
     }
+    setNextButtonDisabled(true)
     setButtonIsDisabled(false)
     setAnswerFeedback('')
 
@@ -73,7 +75,7 @@ const App = () => {
         })}
       </section>
       <section>
-        <button id="next-button" onClick={()=>handleNextButton()}>Next</button>
+        <button id="next-button" disabled={nextButtonDisabled} onClick={()=>handleNextButton()}>Next</button>
       </section>
 
     </div>
