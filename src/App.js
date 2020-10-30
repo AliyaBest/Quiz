@@ -17,7 +17,7 @@ const App = () => {
     if(isCorrect){
       setScore(score + 1)
       setIsCorrect(true)
-      setAnswerFeedback('Correct')
+      setAnswerFeedback('Correct!')
     } else {
       setIsCorrect(false)
       setAnswerFeedback(`Sorry! That's incorrect.The correct answer is "${correctAnswer}"`)
@@ -44,12 +44,12 @@ const App = () => {
 
   return (
     <div>
+      {console.log(document.getElementsByClassName("answer_buttons"))}
       <header>
         <h1>Tandem for 400!</h1>
-        <h2>Question {currentQuestion + 1} of {data.length}</h2>
       </header>
 
-      <main>
+      <main id="question-container">
         {showScore ?
           <section>
             <p>You got {score} out of {data.length} correct.</p>
@@ -66,14 +66,14 @@ const App = () => {
 
                 return(
                   <section className="answers">
-                    <h3 key={id}>{element.question}</h3>
+                    <h2 key={id} id="question">{element.question}</h2>
 
                     {answers
                       .map(answer=>{
                         return <ul>
-                                  <li className="answer_buttons" disabled={buttonIsDisabled} onClick={()=>handleAnswerButton(!element.incorrect.includes(answer))}>
+                                  <button className="answer_buttons" disabled={buttonIsDisabled} onClick={()=>handleAnswerButton(!element.incorrect.includes(answer))}>
                                     {answer}
-                                  </li>
+                                  </button>
                                 </ul>
                   })}
                   <p>{answerFeedback}</p>
@@ -82,11 +82,13 @@ const App = () => {
           }
 
         })}
+
+        <section id="bottom">
+        <caption>Question <em>{currentQuestion + 1}</em> of <em>{data.length}</em></caption>
+
+<button id="next-button" disabled={nextButtonDisabled} onClick={()=>handleNextButton()}>Next ></button>
+        </section>
       </main>
-
-      <button id="next-button" disabled={nextButtonDisabled} onClick={()=>handleNextButton()}>Next</button>
-
-
     </div>
 
   )
