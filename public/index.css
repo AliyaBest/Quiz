@@ -3,216 +3,252 @@
    License: none (public domain)
 */
 /* CSS RESET */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* MY CSS */
-*{
-	box-sizing: border-box;
-}
-/* -------------------------------------
-	Typography
-------------------------------------- */
-
-/* h1, h2, h3, h4, h5, h6, p, ul, li, span, strong, em{
-
-} */
-
-h1{
-  font-family: "Montserrat", 'Times New Roman', serif;
-	font-size: 65px;
-	font-weight: 600;
-	color:	#717345;
-	margin-top: 30px;
+* {
+  box-sizing: border-box;
 }
 
-p{
-	font-family: "Montserrat", 'Times New Roman', serif;
-	color: #001129;
-	font-size: 17px;
-	padding: 0px 40px 0px 40px;
-	line-height: 1.25;
-}
-em{
-font-weight: 600;
+h1 {
+  font-family: "Montserrat", "Times New Roman", serif;
+  font-size: 65px;
+  font-weight: 600;
+  color: #717345;
+  margin-top: 30px;
 }
 
-caption{
-	font-size: 13px;
-	font-family: "Montserrat", 'Times New Roman', serif;
+h2 {
+  font-family: "Raleway", "Times New Roman", serif;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.35;
+  padding: 30px 40px 20px 40px;
 }
 
-
-
-/* -------------------------------------
-Base
-------------------------------------- */
-/* html{}
-*/
-body{
-	display: flex;
-	justify-content: center;
-	background: #fff4e6;
+p {
+  font-family: "Montserrat", "Times New Roman", serif;
+  color: #001129;
+  font-size: 17px;
+  padding: 0px 40px 0px 40px;
+  line-height: 1.25;
 }
 
-#question-container{
-	display: flex;
-	flex-direction: column;
-	/* justify-content: center; */
-	background:	#fffdfc;
-	width: 550px;
-	/* height: 500px; */
-	margin-top: 20px;
+em {
+  font-weight: 600;
 }
 
-#question{
-	/* display: flex;
-	flex-direction: column; */
-	/* justify-content: center; */
-	font-family: "Raleway", 'Times New Roman', serif;
-	font-size: 27px;
-	font-weight: 400;
-	line-height: 1.35;
-	padding: 30px 40px 20px 40px;
-	/* color:	#001129; */
+#question-count {
+  font-size: 13px;
+  font-family: "Montserrat", "Times New Roman", serif;
+  padding: 0;
 }
 
-ul{
-	display: flex;
-	justify-content: center;
+body {
+  display: flex;
+  justify-content: center;
+  background: #fff4e6;
 }
 
-.answer_buttons{
-	width: 475px;
-	background: #001129;
-	margin: 10px;
-	padding: 20px;
-	color: #fffdfc;
-	font-family: "Martel Sans", Helvetica, sans-serif;
-	font-weight: 600;
-	font-size: 17px;
-	border: none;
+#score-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
 }
 
-.answer_buttons:hover{
-	background: #0F4DA3;
+#score-page p:last-child {
+  font-size: 36px;
+  font-weight: 700;
 }
 
-.answer_buttons:disabled{
-	background: #D6D6D6;
+#question-container {
+  display: flex;
+  flex-direction: column;
+  background: #fffdfc;
+  width: 550px;
+  margin-top: 20px;
 }
 
-.answer_buttons:active{
-	transform: scale(1.05)
+ul {
+  display: flex;
+  justify-content: center;
 }
 
-#next-button{
-	background:	#c9c553;
-	color: #001129;
-	width: 100px;
-	padding: 10px 0px;
-	border: none;
+.answer_buttons {
+  width: 475px;
+  background: #001129;
+  margin: 10px;
+  padding: 20px;
+  color: #fffdfc;
+  font-family: "Martel Sans", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  border: none;
 }
 
-#next-button:hover{
-	background:	#ab8438;
-	color: #001129;
-	width: 100px;
-	padding: 10px 0px;
-	border: none;
+.answer_buttons:hover {
+  background: #0f4da3;
 }
 
-#next-button:disabled{
-	background:	#D6D6D6;
-	color: white;
-	width: 100px;
-	padding: 10px 0px;
-	border: none;
+.answer_buttons:disabled {
+  background: #d6d6d6;
 }
 
-#bottom{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: 20px 40px;
+.answer_buttons:active {
+  transform: scale(1.05);
 }
 
-/*
-a{}
-img{} */
+#next-button {
+  background: #c9c553;
+  color: #001129;
+  width: 100px;
+  padding: 10px 0px;
+  border: none;
+}
 
-/* -------------------------------------
-Same elements
-------------------------------------- */
-/* .none{}
-.flex{}
-.cta{} */
+#next-button:hover {
+  background: #ab8438;
+  color: #001129;
+  width: 100px;
+  padding: 10px 0px;
+  border: none;
+}
 
-/* -------------------------------------
-Header & Footer
-------------------------------------- */
-/* header{}
-nav{}
-nav ul{}
-nav li{}
-.logo{}
+#next-button:disabled {
+  background: #d6d6d6;
+  color: white;
+  width: 100px;
+  padding: 10px 0px;
+  border: none;
+}
 
-footer{}
-footer a{}
-.social{} */
-
-/* -------------------------------------
-Section - General styles
-------------------------------------- */
-/* section{}
-article{} */
-
-/* -------------------------------------
-Section - Details
-------------------------------------- */
-/* #specific__section{} */
-
-/* -------------------------------------
-Media Queries
-------------------------------------- */
+#bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 40px;
+}
