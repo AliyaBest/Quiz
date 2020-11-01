@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import data from "../db/Apprentice_TandemFor400_Data.json";
 
 const App = () => {
@@ -11,7 +11,11 @@ const App = () => {
   const [answerFeedback, setAnswerFeedback] = useState("");
   const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
   let correctAnswer = "";
-  let percentageScore = Math.ceil((100 / data.length) * score);
+
+  const [dataShuffle, setDataShuffle] = useState(data)
+  let percentageScore = Math.ceil(10 * score);
+
+
 
   const handleAnswerButton = isCorrect => {
     if (isCorrect) {
@@ -31,7 +35,7 @@ const App = () => {
   const handleNextButton = () => {
     const nextQuestion = currentQuestion + 1;
 
-    if (nextQuestion < data.length) {
+    if (nextQuestion < 10) {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
@@ -44,6 +48,20 @@ const App = () => {
     setAnswerFeedback("");
   };
 
+  const shuffle =()=>{
+    let arrayCopy = dataShuffle.slice()
+
+    for (let i = arrayCopy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arrayCopy[i], arrayCopy[j]] = [arrayCopy[j], arrayCopy[i]];
+  }
+    setDataShuffle(arrayCopy)
+  }
+
+  useEffect( ()=> {
+      shuffle()
+  }, [])
+
   return (
     <div>
       <header>
@@ -54,12 +72,12 @@ const App = () => {
         {showScore ? (
           <section id="score-page">
             <p>
-              You got {score} out of {data.length} correct.
+              You got {score} out of 10 correct.
             </p>
             <p>Your score is {percentageScore}%</p>
           </section>
         ) : (
-          data.map((element, id) => {
+          dataShuffle.map((element, id) => {
             if (id === currentQuestion) {
               correctAnswer = element.correct;
               const answers = element.incorrect.slice();
@@ -98,7 +116,7 @@ const App = () => {
 
         <section id="bottom">
           <p id="question-count">
-            Question <em>{currentQuestion + 1}</em> of <em>{data.length}</em>
+            Question <em>{currentQuestion + 1}</em> of <em>10</em>
           </p>
 
           <button
