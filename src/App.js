@@ -7,15 +7,12 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [isCorrect, setIsCorrect] = useState();
   const [buttonIsDisabled, setButtonIsDisabled] = useState(false);
-  const correctAnswerPlacement = Math.floor(Math.random() * 4 + 1);
+  const correctAnswerPlacement = Math.floor(Math.random() * 4);
   const [answerFeedback, setAnswerFeedback] = useState("");
   const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
   let correctAnswer = "";
-
-  const [dataShuffle, setDataShuffle] = useState(data)
+  const [dataShuffle, setDataShuffle] = useState(data);
   let percentageScore = Math.ceil(10 * score);
-
-
 
   const handleAnswerButton = isCorrect => {
     if (isCorrect) {
@@ -48,19 +45,19 @@ const App = () => {
     setAnswerFeedback("");
   };
 
-  const shuffle =()=>{
-    let arrayCopy = dataShuffle.slice()
+  const shuffle = () => {
+    let arrayCopy = dataShuffle.slice();
 
     for (let i = arrayCopy.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [arrayCopy[i], arrayCopy[j]] = [arrayCopy[j], arrayCopy[i]];
-  }
-    setDataShuffle(arrayCopy)
-  }
+    }
+    setDataShuffle(arrayCopy);
+  };
 
-  useEffect( ()=> {
-      shuffle()
-  }, [])
+  useEffect(() => {
+    shuffle();
+  }, []);
 
   return (
     <div>
@@ -71,9 +68,7 @@ const App = () => {
       <main id="question-container">
         {showScore ? (
           <section id="score-page">
-            <p>
-              You got {score} out of 10 correct.
-            </p>
+            <p>You got {score} out of 10 correct.</p>
             <p>Your score is {percentageScore}%</p>
           </section>
         ) : (
