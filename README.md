@@ -15,6 +15,7 @@ I created this Trivia App for a coding challenge with the the following acceptan
 * A user can select only 1 answer out of the 4 possible answers.
 * The correct answer must be revealed after a user has submitted their answer
 * A user can see the score they received at the end of the round
+
 Assumptions
 * A round of trivia has 10 Questions
 * All questions are multiple-choice questions
